@@ -21,6 +21,8 @@
     COHomeViewController *homeViewController = [[COHomeViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
 
+    [self styleNavigationBar];
+
     self.window.rootViewController = navigationController;
     [self.window makeKeyAndVisible];
 
@@ -47,6 +49,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Styling
+- (void)styleNavigationBar {
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
 }
 
 @end

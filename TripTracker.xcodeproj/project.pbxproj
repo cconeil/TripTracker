@@ -12,6 +12,7 @@
 		9D4574371A09509E0075CF40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574361A09509E0075CF40 /* Images.xcassets */; };
 		9D4574461A09509F0075CF40 /* TripTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574451A09509F0075CF40 /* TripTrackerTests.m */; };
 		9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574531A0952570075CF40 /* COHomeViewController.m */; };
+		9D4574581A0958380075CF40 /* icon_car.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574561A0958380075CF40 /* icon_car.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		9D4574451A09509F0075CF40 /* TripTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripTrackerTests.m; sourceTree = "<group>"; };
 		9D4574521A0952570075CF40 /* COHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COHomeViewController.h; path = ../COHomeViewController.h; sourceTree = "<group>"; };
 		9D4574531A0952570075CF40 /* COHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COHomeViewController.m; path = ../COHomeViewController.m; sourceTree = "<group>"; };
+		9D4574561A0958380075CF40 /* icon_car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_car.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		9D4574281A09509E0075CF40 /* TripTracker */ = {
 			isa = PBXGroup;
 			children = (
+				9D4574591A09583F0075CF40 /* Images */,
 				9D45742D1A09509E0075CF40 /* BCAppDelegate.h */,
 				9D45742E1A09509E0075CF40 /* BCAppDelegate.m */,
 				9D4574521A0952570075CF40 /* COHomeViewController.h */,
@@ -111,6 +114,14 @@
 				9D4574441A09509F0075CF40 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9D4574591A09583F0075CF40 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				9D4574561A0958380075CF40 /* icon_car.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +205,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D4574371A09509E0075CF40 /* Images.xcassets in Resources */,
+				9D4574581A0958380075CF40 /* icon_car.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

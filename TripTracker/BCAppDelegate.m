@@ -1,22 +1,29 @@
 //
-//  AppDelegate.m
+//  BCAppDelegate.m
 //  TripTracker
 //
 //  Created by Chris O'Neil on 11/4/14.
 //
 //
 
-#import "AppDelegate.h"
+#import "BCAppDelegate.h"
+#import "COHomeViewController.h"
 
-@interface AppDelegate ()
-
+@interface BCAppDelegate ()
 @end
 
-@implementation AppDelegate
+@implementation BCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
+    COHomeViewController *homeViewController = [[COHomeViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:homeViewController];
+
+    self.window.rootViewController = navigationController;
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 

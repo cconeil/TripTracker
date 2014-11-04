@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		9D45742C1A09509E0075CF40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D45742B1A09509E0075CF40 /* main.m */; };
-		9D45742F1A09509E0075CF40 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D45742E1A09509E0075CF40 /* AppDelegate.m */; };
-		9D4574321A09509E0075CF40 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574311A09509E0075CF40 /* ViewController.m */; };
-		9D4574351A09509E0075CF40 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574331A09509E0075CF40 /* Main.storyboard */; };
+		9D45742F1A09509E0075CF40 /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D45742E1A09509E0075CF40 /* BCAppDelegate.m */; };
 		9D4574371A09509E0075CF40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574361A09509E0075CF40 /* Images.xcassets */; };
-		9D45743A1A09509E0075CF40 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574381A09509E0075CF40 /* LaunchScreen.xib */; };
 		9D4574461A09509F0075CF40 /* TripTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574451A09509F0075CF40 /* TripTrackerTests.m */; };
+		9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574531A0952570075CF40 /* COHomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +28,14 @@
 		9D4574261A09509E0075CF40 /* TripTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D45742A1A09509E0075CF40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D45742B1A09509E0075CF40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9D45742D1A09509E0075CF40 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		9D45742E1A09509E0075CF40 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9D4574301A09509E0075CF40 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9D4574311A09509E0075CF40 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9D4574341A09509E0075CF40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9D45742D1A09509E0075CF40 /* BCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BCAppDelegate.h; sourceTree = "<group>"; };
+		9D45742E1A09509E0075CF40 /* BCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BCAppDelegate.m; sourceTree = "<group>"; };
 		9D4574361A09509E0075CF40 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9D4574391A09509E0075CF40 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		9D45743F1A09509E0075CF40 /* TripTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D4574441A09509F0075CF40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D4574451A09509F0075CF40 /* TripTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripTrackerTests.m; sourceTree = "<group>"; };
+		9D4574521A0952570075CF40 /* COHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COHomeViewController.h; path = ../COHomeViewController.h; sourceTree = "<group>"; };
+		9D4574531A0952570075CF40 /* COHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COHomeViewController.m; path = ../COHomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,13 +77,11 @@
 		9D4574281A09509E0075CF40 /* TripTracker */ = {
 			isa = PBXGroup;
 			children = (
-				9D45742D1A09509E0075CF40 /* AppDelegate.h */,
-				9D45742E1A09509E0075CF40 /* AppDelegate.m */,
-				9D4574301A09509E0075CF40 /* ViewController.h */,
-				9D4574311A09509E0075CF40 /* ViewController.m */,
-				9D4574331A09509E0075CF40 /* Main.storyboard */,
+				9D45742D1A09509E0075CF40 /* BCAppDelegate.h */,
+				9D45742E1A09509E0075CF40 /* BCAppDelegate.m */,
+				9D4574521A0952570075CF40 /* COHomeViewController.h */,
+				9D4574531A0952570075CF40 /* COHomeViewController.m */,
 				9D4574361A09509E0075CF40 /* Images.xcassets */,
-				9D4574381A09509E0075CF40 /* LaunchScreen.xib */,
 				9D4574291A09509E0075CF40 /* Supporting Files */,
 			);
 			path = TripTracker;
@@ -163,6 +157,7 @@
 		9D45741E1A09509E0075CF40 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = CO;
 				LastUpgradeCheck = 0610;
 				TargetAttributes = {
 					9D4574251A09509E0075CF40 = {
@@ -198,8 +193,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4574351A09509E0075CF40 /* Main.storyboard in Resources */,
-				9D45743A1A09509E0075CF40 /* LaunchScreen.xib in Resources */,
 				9D4574371A09509E0075CF40 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,9 +211,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4574321A09509E0075CF40 /* ViewController.m in Sources */,
-				9D45742F1A09509E0075CF40 /* AppDelegate.m in Sources */,
+				9D45742F1A09509E0075CF40 /* BCAppDelegate.m in Sources */,
 				9D45742C1A09509E0075CF40 /* main.m in Sources */,
+				9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,25 +234,6 @@
 			targetProxy = 9D4574401A09509E0075CF40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		9D4574331A09509E0075CF40 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D4574341A09509E0075CF40 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9D4574381A09509E0075CF40 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9D4574391A09509E0075CF40 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		9D4574471A09509F0075CF40 /* Debug */ = {
@@ -341,7 +315,8 @@
 		9D45744A1A09509F0075CF40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TripTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -351,7 +326,8 @@
 		9D45744B1A09509F0075CF40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-2";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = TripTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

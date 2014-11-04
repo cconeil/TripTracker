@@ -11,6 +11,7 @@
 @interface UIColor (COAdditions)
 
 + (UIColor *)co_mediumGrayColor;
++ (UIColor *)co_lightGrayColor;
 + (UIColor *)co_lyftGreenColor;
 + (UIColor *)co_cellSeparatorColor;
 

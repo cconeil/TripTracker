@@ -9,7 +9,7 @@
 #import "COTripLoggingControlView.h"
 #import "UIColor+COAdditions.h"
 
-static const CGFloat kHorizontalPadding = 16.0;
+static const CGFloat kHorizontalMargin = 16.0;
 static const CGFloat kTrackingLabelFontSize = 16.0;
 static const CGFloat kSeparatorViewHeight = 1.0;
 
@@ -52,12 +52,12 @@ static const CGFloat kSeparatorViewHeight = 1.0;
     [self.trackingSwitch sizeToFit];
 
     CGRect trackingSwitchFrame = self.trackingSwitch.frame;
-    trackingSwitchFrame.origin.x = self.frame.size.width - trackingSwitchFrame.size.width - kHorizontalPadding;
+    trackingSwitchFrame.origin.x = self.frame.size.width - trackingSwitchFrame.size.width - kHorizontalMargin;
     trackingSwitchFrame.origin.y = (self.frame.size.height - trackingSwitchFrame.size.height) / 2.0;
     self.trackingSwitch.frame = trackingSwitchFrame;
 
     [self.trackingLabel sizeToFit];
-    self.trackingLabel.frame = CGRectMake(kHorizontalPadding, (self.frame.size.height - self.trackingLabel.frame.size.height) / 2.0, self.frame.size.width - trackingSwitchFrame.size.width - 2.0 * kHorizontalPadding, self.trackingLabel.frame.size.height);
+    self.trackingLabel.frame = CGRectMake(kHorizontalMargin, (self.frame.size.height - self.trackingLabel.frame.size.height) / 2.0, self.frame.size.width - trackingSwitchFrame.size.width - 2.0 * kHorizontalMargin, self.trackingLabel.frame.size.height);
 }
 
 @end

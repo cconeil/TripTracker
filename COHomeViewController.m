@@ -8,8 +8,12 @@
 
 #import "COHomeViewController.h"
 #import "COTripLoggingControlView.h"
+#import "COTripTableViewCell.h"
+#import "UIColor+COAdditions.h"
 
 static const CGFloat kTripLoggingControlViewHeight = 70.0;
+static const CGFloat kTripTableViewCellHeight = 55.0;
+static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
 @interface COHomeViewController() <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) COTripLoggingControlView *tripLoggingControlView;
@@ -29,6 +33,8 @@ static const CGFloat kTripLoggingControlViewHeight = 70.0;
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.tripLoggingControlView.frame), self.view.frame.size.width, self.view.frame.size.height - self.tripLoggingControlView.frame.size.height)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.separatorColor = [UIColor co_cellSeparatorColor];
+    [self.tableView registerClass:[COTripTableViewCell class] forCellReuseIdentifier:kTripTableViewCellIdentifier];
     [self.view addSubview:self.tableView];
 }
 
@@ -41,8 +47,16 @@ static const CGFloat kTripLoggingControlViewHeight = 70.0;
     return 5;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return kTripTableViewCellHeight;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [[UITableViewCell alloc] init];
+    COTripTableViewCell *cell = (COTripTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTripTableViewCellIdentifier forIndexPath:indexPath];
+//    cell.separatorInset = UIEdgeInsetsZero;
+
+
+    return cell;
 }
 
 #pragma mark - UITableViewDelegate

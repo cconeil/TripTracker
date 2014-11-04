@@ -7,8 +7,12 @@
 //
 
 #import "COHomeViewController.h"
+#import "COTripLoggingControlView.h"
+
+static const CGFloat kTripLoggingControlViewHeight = 70.0;
 
 @interface COHomeViewController() <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) COTripLoggingControlView *tripLoggingControlView;
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
@@ -18,7 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tripLoggingControlView = [[COTripLoggingControlView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, kTripLoggingControlViewHeight)];
+    self.tripLoggingControlView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:self.tripLoggingControlView];
+
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.tripLoggingControlView.frame), self.view.frame.size.width, self.view.frame.size.height - self.tripLoggingControlView.frame.size.height)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];

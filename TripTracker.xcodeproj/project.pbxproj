@@ -13,6 +13,8 @@
 		9D4574461A09509F0075CF40 /* TripTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574451A09509F0075CF40 /* TripTrackerTests.m */; };
 		9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D4574531A0952570075CF40 /* COHomeViewController.m */; };
 		9D4574581A0958380075CF40 /* icon_car.png in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574561A0958380075CF40 /* icon_car.png */; };
+		9D7E3EFB1A095F9B0038FDB0 /* COTripLoggingControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E3EFA1A095F9B0038FDB0 /* COTripLoggingControlView.m */; };
+		9D7E3EFE1A0965940038FDB0 /* UIColor+COAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D7E3EFD1A0965940038FDB0 /* UIColor+COAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,10 @@
 		9D4574521A0952570075CF40 /* COHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = COHomeViewController.h; path = ../COHomeViewController.h; sourceTree = "<group>"; };
 		9D4574531A0952570075CF40 /* COHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = COHomeViewController.m; path = ../COHomeViewController.m; sourceTree = "<group>"; };
 		9D4574561A0958380075CF40 /* icon_car.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_car.png; sourceTree = "<group>"; };
+		9D7E3EF91A095F9B0038FDB0 /* COTripLoggingControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COTripLoggingControlView.h; sourceTree = "<group>"; };
+		9D7E3EFA1A095F9B0038FDB0 /* COTripLoggingControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COTripLoggingControlView.m; sourceTree = "<group>"; };
+		9D7E3EFC1A0965940038FDB0 /* UIColor+COAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+COAdditions.h"; sourceTree = "<group>"; };
+		9D7E3EFD1A0965940038FDB0 /* UIColor+COAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+COAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +90,10 @@
 				9D45742E1A09509E0075CF40 /* BCAppDelegate.m */,
 				9D4574521A0952570075CF40 /* COHomeViewController.h */,
 				9D4574531A0952570075CF40 /* COHomeViewController.m */,
+				9D7E3EF91A095F9B0038FDB0 /* COTripLoggingControlView.h */,
+				9D7E3EFA1A095F9B0038FDB0 /* COTripLoggingControlView.m */,
+				9D7E3EFC1A0965940038FDB0 /* UIColor+COAdditions.h */,
+				9D7E3EFD1A0965940038FDB0 /* UIColor+COAdditions.m */,
 				9D4574361A09509E0075CF40 /* Images.xcassets */,
 				9D4574291A09509E0075CF40 /* Supporting Files */,
 			);
@@ -224,7 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D45742F1A09509E0075CF40 /* BCAppDelegate.m in Sources */,
+				9D7E3EFB1A095F9B0038FDB0 /* COTripLoggingControlView.m in Sources */,
 				9D45742C1A09509E0075CF40 /* main.m in Sources */,
+				9D7E3EFE1A0965940038FDB0 /* UIColor+COAdditions.m in Sources */,
 				9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,6 +411,7 @@
 				9D45744B1A09509F0075CF40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9D45744C1A09509F0075CF40 /* Build configuration list for PBXNativeTarget "TripTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +420,7 @@
 				9D45744E1A09509F0075CF40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

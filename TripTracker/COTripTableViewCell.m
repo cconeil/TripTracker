@@ -13,7 +13,7 @@ static const CGFloat kHorizontalMargin = 15.0;
 static const CGFloat kHorizontalPadding = 15.0;
 static const CGFloat kVerticalMargin = 12.0;
 static const CGFloat kVerticalPadding = 4.0;
-static const CGFloat kRouteLabelFontSize = 15.0;
+static const CGFloat kRouteLabelFontSize = 14.0;
 static const CGFloat kTimeLableFontSize = 12.0;
 static const CGFloat kSeparatorViewHeight = 1.0;
 

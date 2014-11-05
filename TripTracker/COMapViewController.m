@@ -10,7 +10,6 @@
 #import <MapKit/MapKit.h>
 #import "COMapPin.h"
 
-
 @interface COMapViewController()
 @property (nonatomic, strong) MKMapView *mapView;
 @property (nonatomic, strong) NSArray *annotations;
@@ -27,7 +26,7 @@
 
     [self createAnnotations];
     [self addAnnotationsToMap];
-    [self sizeMapToFitAnnotations];
+    [self displayAnnotationsOnMap];
 }
 
 #pragma mark -
@@ -51,20 +50,8 @@
     }
 }
 
-- (void)sizeMapToFitAnnotations {
-    MKMapRect zoomRect = MKMapRectNull;
-    for (COMapPin *pin in self.annotations) {
-
-        MKMapPoint annotationPoint = MKMapPointForCoordinate(pin.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0, 0);
-        if (MKMapRectIsNull(zoomRect)) {
-            zoomRect = pointRect;
-        } else {
-            zoomRect = MKMapRectUnion(zoomRect, pointRect);
-        }
-    }
-    
-    [self.mapView setVisibleMapRect:zoomRect animated:YES];
+- (void)displayAnnotationsOnMap {
+    [self.mapView showAnnotations:self.annotations animated:YES];
 }
 
 @end

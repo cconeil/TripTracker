@@ -48,17 +48,17 @@
     NSString *minutesDescriptor = includeMinutesPlural ? NSLocalizedString(@"mins", nil) : NSLocalizedString(@"min", nil);
     NSString *secondsDescriptor = includeSecondsPlural ? NSLocalizedString(@"secs", nil) : NSLocalizedString(@"sec", nil);
 
-    NSInteger h = (NSInteger)hours;
-    NSInteger m = (NSInteger)minutes % 60;
-    NSInteger s = (NSInteger)seconds % 60;
+    int h = (int)hours;
+    int m = (int)minutes % 60;
+    int s = (int)seconds % 60;
 
     // Always include everyting less than the highest form of time
     if (includeHours) {
-        return [NSString stringWithFormat:@"%ld%@, %ld%@, %ld%@", h, hourDescriptor, m, minutesDescriptor, s, secondsDescriptor];
+        return [NSString stringWithFormat:@"%d%@, %d%@, %d%@", h, hourDescriptor, m, minutesDescriptor, s, secondsDescriptor];
     } else if (includeMinutes) {
-        return [NSString stringWithFormat:@"%ld%@, %ld%@", m, minutesDescriptor, s, secondsDescriptor];
+        return [NSString stringWithFormat:@"%d%@, %d%@", m, minutesDescriptor, s, secondsDescriptor];
     } else {
-        return [NSString stringWithFormat:@"%ld%@", s, secondsDescriptor];
+        return [NSString stringWithFormat:@"%d%@", s, secondsDescriptor];
     }
 }
 

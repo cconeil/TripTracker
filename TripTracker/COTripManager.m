@@ -177,7 +177,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
             }
         }
     } else if (speed <= 0.0) {
-        if (!self.endTripTimer) {
+        if (self.recordingTrip && !self.endTripTimer) {
             NSLog(@"Driver stopped, waiting %f seconds to end trip.", kEndTripTimeInterval);
             self.endTripTimer = [NSTimer scheduledTimerWithTimeInterval:kEndTripTimeInterval target:self selector:@selector(endTrip) userInfo:nil repeats:NO];
         }

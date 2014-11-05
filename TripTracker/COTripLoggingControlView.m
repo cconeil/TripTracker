@@ -15,7 +15,7 @@ static const CGFloat kSeparatorViewHeight = 1.0;
 
 @interface COTripLoggingControlView()
 
-@property (nonatomic, assign, readwrite) BOOL tracking;
+@property (nonatomic, assign, readwrite) BOOL logging;
 @property (nonatomic, strong) UISwitch *trackingSwitch;
 @property (nonatomic, strong) UILabel *trackingLabel;
 @property (nonatomic, strong) UIView *separatorView;
@@ -36,6 +36,7 @@ static const CGFloat kSeparatorViewHeight = 1.0;
 
         _trackingSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
         _trackingSwitch.onTintColor = [UIColor co_lyftGreenColor];
+        [_trackingSwitch addTarget:self action:@selector(switchChangedState:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:_trackingSwitch];
 
         _separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.frame.size.height - kSeparatorViewHeight, self.frame.size.width, kSeparatorViewHeight)];
@@ -58,6 +59,13 @@ static const CGFloat kSeparatorViewHeight = 1.0;
 
     [self.trackingLabel sizeToFit];
     self.trackingLabel.frame = CGRectMake(kHorizontalMargin, (self.frame.size.height - self.trackingLabel.frame.size.height) / 2.0, self.frame.size.width - trackingSwitchFrame.size.width - 2.0 * kHorizontalMargin, self.trackingLabel.frame.size.height);
+}
+
+- (void)switchChangedState:(UISwitch *)sender {
+    self.logging = self.trackingSwitch.on;
+    if ([self.delegate respondsToSelector:@selector(tripLoggingControlViewDidUpdateLogging:)]) {
+        [self.delegate tripLoggingControlViewDidUpdateLogging:self];
+    }
 }
 
 @end

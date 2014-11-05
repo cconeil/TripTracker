@@ -16,4 +16,12 @@
 @dynamic startLocation;
 @dynamic endLocation;
 
+- (NSString *)route {
+    return [NSString stringWithFormat:@"%@ > %@", self.startLocation, self.endLocation];
+}
+
+- (NSString *)timeSpan {
+    return @"random time span";
+}
+
 @end

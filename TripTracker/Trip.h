@@ -17,4 +17,7 @@
 @property (nonatomic, retain) NSString * startLocation;
 @property (nonatomic, retain) NSString * endLocation;
 
+- (NSString *)route;
+- (NSString *)timeSpan;
+
 @end

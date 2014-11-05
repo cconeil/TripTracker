@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol COTripLoggingControlViewDelegate;
+
 @interface COTripLoggingControlView : UIView
 
 @property (nonatomic, assign, readonly, getter=isLogging) BOOL logging;
+@property (nonatomic, weak) id<COTripLoggingControlViewDelegate> delegate;
 
+@end
+
+@protocol COTripLoggingControlViewDelegate <NSObject>
+- (void)tripLoggingControlViewDidUpdateLogging:(COTripLoggingControlView *)tripLogggingControlView;
 @end

@@ -10,14 +10,19 @@
 #import "COTripLoggingControlView.h"
 #import "COTripTableViewCell.h"
 #import "UIColor+COAdditions.h"
+#import "COTripManager.h"
+
+#import <CoreLocation/CoreLocation.h>
 
 static const CGFloat kTripLoggingControlViewHeight = 70.0;
 static const CGFloat kTripTableViewCellHeight = 55.0;
 static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
-@interface COHomeViewController() <UITableViewDataSource, UITableViewDelegate>
+@interface COHomeViewController() <UITableViewDataSource, UITableViewDelegate, COTripLoggingControlViewDelegate>
+
 @property (nonatomic, strong) COTripLoggingControlView *tripLoggingControlView;
 @property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation COHomeViewController
@@ -28,6 +33,7 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
     self.tripLoggingControlView = [[COTripLoggingControlView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, kTripLoggingControlViewHeight)];
     self.tripLoggingControlView.backgroundColor = [UIColor whiteColor];
+    self.tripLoggingControlView.delegate = self;
     [self.view addSubview:self.tripLoggingControlView];
 
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.tripLoggingControlView.frame), self.view.frame.size.width, self.view.frame.size.height - self.tripLoggingControlView.frame.size.height)];
@@ -36,6 +42,23 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
     self.tableView.separatorColor = [UIColor co_cellSeparatorColor];
     [self.tableView registerClass:[COTripTableViewCell class] forCellReuseIdentifier:kTripTableViewCellIdentifier];
     [self.view addSubview:self.tableView];
+
+    [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tipManagerDidLogTrip) name:COTripManagerDidCreateTripNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:COTripManagerDidCreateTripNotification object:nil];
+}
+
+#pragma mark -
+- (void)tipManagerDidLogTrip {
+    [self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -44,7 +67,7 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [COTripManager sharedManager].trips.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -53,12 +76,18 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     COTripTableViewCell *cell = (COTripTableViewCell *)[tableView dequeueReusableCellWithIdentifier:kTripTableViewCellIdentifier forIndexPath:indexPath];
-//    cell.separatorInset = UIEdgeInsetsZero;
 
+    Trip *trip = [COTripManager sharedManager].trips[indexPath.row];
+    cell.trip = trip;
 
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
+
+#pragma mark - COTripLoggingControlViewDelegate
+- (void)tripLoggingControlViewDidUpdateLogging:(COTripLoggingControlView *)tripLogggingControlView {
+    [COTripManager sharedManager].trackingEnabled = tripLogggingControlView.logging;
+}
 
 @end

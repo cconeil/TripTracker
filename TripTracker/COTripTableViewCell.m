@@ -36,13 +36,13 @@ static const CGFloat kTimeLableFontSize = 10.0;
         _routeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _routeLabel.textColor = [UIColor co_mediumGrayColor];
         _routeLabel.font = [UIFont boldSystemFontOfSize:kRouteLabelFontSize];
-        _routeLabel.text = @"1639 3rd Street > 568 Brannan Street";
+//        _routeLabel.text = @"1639 3rd Street > 568 Brannan Street";
         [self addSubview:_routeLabel];
 
         _timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _timeLabel.textColor = [UIColor co_lightGrayColor];
         _timeLabel.font = [UIFont italicSystemFontOfSize:kTimeLableFontSize];
-        _timeLabel.text = @"1:50pm - 2:05pm (15 min)";
+//        _timeLabel.text = @"1:50pm - 2:05pm (15 min)";
         [self addSubview:_timeLabel];
     }
     return self;
@@ -54,6 +54,10 @@ static const CGFloat kTimeLableFontSize = 10.0;
     }
 
     _trip = trip;
+
+    _routeLabel.text = trip.route;
+    _timeLabel.text = trip.timeSpan;
+
     [self setNeedsLayout];
 }
 

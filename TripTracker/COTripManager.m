@@ -90,6 +90,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 - (void)setTrackingEnabled:(BOOL)trackingEnabled {
     _trackingEnabled = trackingEnabled;
     if (_trackingEnabled) {
+        [self.locationManager requestAlwaysAuthorization];
         [self.locationManager startUpdatingLocation];
     } else {
         [self.locationManager stopUpdatingLocation];

@@ -57,7 +57,7 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
 #pragma mark -
 - (void)tipManagerDidLogTrip {
-    [self.tableView reloadData];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 #pragma mark - UITableViewDataSource

@@ -11,6 +11,8 @@
 @interface NSDate (COAdditions)
 
 - (NSDate *)co_localizedDate;
+
+// This 
 + (NSString *)co_timeInWordsBetweenStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate;
 
 @end

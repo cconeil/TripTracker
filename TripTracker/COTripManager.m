@@ -94,8 +94,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
         [self.locationManager requestAlwaysAuthorization];
         [self.locationManager startUpdatingLocation];
     } else {
-        [self.locationManager stopUpdatingLocation];
-
         if (self.recordingTrip) {
             [self endTrip];
             if (self.endTripTimer) {
@@ -103,11 +101,13 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
                 self.endTripTimer = nil;
             }
         }
+        [self.locationManager stopUpdatingLocation];
     }
 }
 
 #pragma mark -
 - (void)startRecordingAtLocation:(CLLocation *)location {
+    NSLog(@"start location: %@", location);
     self.recordingTrip = YES;
     self.currentTrip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:self.managedObjectContext];
     self.currentTrip.startDate = [NSDate date];
@@ -119,6 +119,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 }
 
 - (void)endRecordingAtLocation:(CLLocation *)location completion:(void (^)())completion {
+    NSLog(@"end location: %@", location);
     Trip *tipClosure = self.currentTrip;
     tipClosure.endDate = [NSDate date];
     tipClosure.endLongitude = location.coordinate.longitude;
@@ -161,6 +162,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    NSLog(@"locationManager: didUpdateLocations:");
     CLLocation *location = [locations lastObject];
     CLLocationSpeed speed = location.speed * kMilesPerHourConversion;
 
@@ -181,6 +183,9 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     }
 }
 
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"locationManager:didFailWithError: %@", error);
+}
 
 #pragma mark - Core Data
 - (void)saveContext {

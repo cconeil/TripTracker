@@ -15,7 +15,7 @@ NSString * const COTripManagerDidCreateTripNotification = @"COTripManagerDidCrea
 
 static const CLLocationSpeed kMilesPerHourConversion = 2.2369362920544;
 static const CLLocationSpeed kMinimumStartSpeed = 10.0; // in MPH
-static const NSTimeInterval kEndTripTimeInterval = 1.0; // in seconds
+static const NSTimeInterval kEndTripTimeInterval = 60.0; // in seconds
 static NSString * const kTripTrackerCache = @"TripTrackerCache";
 
 @interface COTripManager() <CLLocationManagerDelegate>
@@ -33,7 +33,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 // Tracking
 @property (nonatomic, assign) BOOL recordingTrip;
 @property (nonatomic, strong) NSTimer *endTripTimer;
-@property (nonatomic, assign) CLLocationSpeed previousSpeed;
 @property (nonatomic, strong) Trip *currentTrip;
 
 @end
@@ -94,6 +93,14 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
         [self.locationManager startUpdatingLocation];
     } else {
         [self.locationManager stopUpdatingLocation];
+
+        if (self.recordingTrip) {
+            [self endTrip];
+            if (self.endTripTimer) {
+                [self.endTripTimer invalidate];
+                self.endTripTimer = nil;
+            }
+        }
     }
 }
 
@@ -164,7 +171,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     }
 
     self.previousLocation = location;
-    self.previousSpeed = speed;
 }
 
 

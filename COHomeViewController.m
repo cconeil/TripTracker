@@ -38,7 +38,7 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.tripLoggingControlView.frame), self.view.frame.size.width, self.view.frame.size.height - self.tripLoggingControlView.frame.size.height)];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.separatorColor = [UIColor co_cellSeparatorColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.tableView registerClass:[COTripTableViewCell class] forCellReuseIdentifier:kTripTableViewCellIdentifier];
     [self.view addSubview:self.tableView];
 

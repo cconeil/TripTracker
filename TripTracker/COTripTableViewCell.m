@@ -15,12 +15,14 @@ static const CGFloat kVerticalMargin = 15.0;
 static const CGFloat kVerticalPadding = 8.0;
 static const CGFloat kRouteLabelFontSize = 12.0;
 static const CGFloat kTimeLableFontSize = 10.0;
+static const CGFloat kSeparatorViewHeight = 1.0;
 
 @interface COTripTableViewCell()
 
 @property (nonatomic, strong) UIImageView *iconImageView;
 @property (nonatomic, strong) UILabel *routeLabel;
 @property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UIView *separatorView;
 
 @end
 
@@ -31,19 +33,22 @@ static const CGFloat kTimeLableFontSize = 10.0;
     if (self) {
 
         _iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"car_icon"]];
-        [self addSubview:_iconImageView];
+        [self.contentView addSubview:_iconImageView];
 
         _routeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _routeLabel.textColor = [UIColor co_mediumGrayColor];
         _routeLabel.font = [UIFont boldSystemFontOfSize:kRouteLabelFontSize];
-//        _routeLabel.text = @"1639 3rd Street > 568 Brannan Street";
-        [self addSubview:_routeLabel];
+        [self.contentView addSubview:_routeLabel];
 
         _timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _timeLabel.textColor = [UIColor co_lightGrayColor];
         _timeLabel.font = [UIFont italicSystemFontOfSize:kTimeLableFontSize];
-//        _timeLabel.text = @"1:50pm - 2:05pm (15 min)";
-        [self addSubview:_timeLabel];
+        [self.contentView addSubview:_timeLabel];
+
+        _separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.frame.size.height - kSeparatorViewHeight, self.frame.size.width, kSeparatorViewHeight)];
+        _separatorView.backgroundColor = [UIColor co_cellSeparatorColor];
+        _separatorView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [self.contentView addSubview:_separatorView];
     }
     return self;
 }

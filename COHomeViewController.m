@@ -11,6 +11,7 @@
 #import "COTripTableViewCell.h"
 #import "UIColor+COAdditions.h"
 #import "COTripManager.h"
+#import "COMapViewController.h"
 #import <CoreLocation/CoreLocation.h>
 
 static const CGFloat kTripLoggingControlViewHeight = 70.0;
@@ -83,6 +84,13 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 }
 
 #pragma mark - UITableViewDelegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+
+    COMapViewController *mapViewController = [[COMapViewController alloc] initWithNibName:nil bundle:nil];
+    mapViewController.trip = [COTripManager sharedManager].trips[indexPath.row];
+    [self.navigationController pushViewController:mapViewController animated:YES];
+}
 
 #pragma mark - COTripLoggingControlViewDelegate
 - (void)tripLoggingControlViewDidUpdateLogging:(COTripLoggingControlView *)tripLogggingControlView {

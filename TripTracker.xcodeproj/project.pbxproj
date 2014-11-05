@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		9D349AB31A09FDDB003F7EF6 /* NSDate+COAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D349AB21A09FDDB003F7EF6 /* NSDate+COAdditions.m */; };
+		9D349ABC1A0A0FC2003F7EF6 /* COMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D349ABB1A0A0FC2003F7EF6 /* COMapViewController.m */; };
+		9D349ABE1A0A1063003F7EF6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D349ABD1A0A1063003F7EF6 /* MapKit.framework */; };
+		9D349AC11A0A1E9D003F7EF6 /* COMapPin.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D349AC01A0A1E9D003F7EF6 /* COMapPin.m */; };
 		9D45742C1A09509E0075CF40 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D45742B1A09509E0075CF40 /* main.m */; };
 		9D45742F1A09509E0075CF40 /* BCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D45742E1A09509E0075CF40 /* BCAppDelegate.m */; };
 		9D4574371A09509E0075CF40 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9D4574361A09509E0075CF40 /* Images.xcassets */; };
@@ -36,6 +39,11 @@
 /* Begin PBXFileReference section */
 		9D349AB11A09FDDB003F7EF6 /* NSDate+COAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+COAdditions.h"; sourceTree = "<group>"; };
 		9D349AB21A09FDDB003F7EF6 /* NSDate+COAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+COAdditions.m"; sourceTree = "<group>"; };
+		9D349ABA1A0A0FC2003F7EF6 /* COMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COMapViewController.h; sourceTree = "<group>"; };
+		9D349ABB1A0A0FC2003F7EF6 /* COMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COMapViewController.m; sourceTree = "<group>"; };
+		9D349ABD1A0A1063003F7EF6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		9D349ABF1A0A1E9D003F7EF6 /* COMapPin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = COMapPin.h; sourceTree = "<group>"; };
+		9D349AC01A0A1E9D003F7EF6 /* COMapPin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = COMapPin.m; sourceTree = "<group>"; };
 		9D4574261A09509E0075CF40 /* TripTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D45742A1A09509E0075CF40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9D45742B1A09509E0075CF40 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -67,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D349ABE1A0A1063003F7EF6 /* MapKit.framework in Frameworks */,
 				9D7E3F121A098A2E0038FDB0 /* CoreLocation.framework in Frameworks */,
 				9D7E3F061A096BBF0038FDB0 /* CoreData.framework in Frameworks */,
 			);
@@ -98,6 +107,8 @@
 			children = (
 				9D4574521A0952570075CF40 /* COHomeViewController.h */,
 				9D4574531A0952570075CF40 /* COHomeViewController.m */,
+				9D349ABA1A0A0FC2003F7EF6 /* COMapViewController.h */,
+				9D349ABB1A0A0FC2003F7EF6 /* COMapViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -119,6 +130,8 @@
 				9D7E3F081A096CB40038FDB0 /* TripTracker.xcdatamodeld */,
 				9D7E3F0B1A096D5C0038FDB0 /* Trip.h */,
 				9D7E3F0C1A096D5C0038FDB0 /* Trip.m */,
+				9D349ABF1A0A1E9D003F7EF6 /* COMapPin.h */,
+				9D349AC01A0A1E9D003F7EF6 /* COMapPin.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -196,6 +209,7 @@
 		9D7E3F071A096BDD0038FDB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9D349ABD1A0A1063003F7EF6 /* MapKit.framework */,
 				9D7E3F111A098A2E0038FDB0 /* CoreLocation.framework */,
 				9D7E3F051A096BBF0038FDB0 /* CoreData.framework */,
 			);
@@ -305,11 +319,13 @@
 				9D7E3F0D1A096D5C0038FDB0 /* Trip.m in Sources */,
 				9D45742F1A09509E0075CF40 /* BCAppDelegate.m in Sources */,
 				9D7E3EFB1A095F9B0038FDB0 /* COTripLoggingControlView.m in Sources */,
+				9D349AC11A0A1E9D003F7EF6 /* COMapPin.m in Sources */,
 				9D45742C1A09509E0075CF40 /* main.m in Sources */,
 				9D7E3EFE1A0965940038FDB0 /* UIColor+COAdditions.m in Sources */,
 				9D7E3F101A09783F0038FDB0 /* COTripManager.m in Sources */,
 				9D7E3F011A0969D90038FDB0 /* COTripTableViewCell.m in Sources */,
 				9D7E3F0A1A096CB40038FDB0 /* TripTracker.xcdatamodeld in Sources */,
+				9D349ABC1A0A0FC2003F7EF6 /* COMapViewController.m in Sources */,
 				9D4574541A0952570075CF40 /* COHomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,10 @@
 @dynamic endDate;
 @dynamic startLocation;
 @dynamic endLocation;
+@dynamic startLatitude;
+@dynamic startLongitude;
+@dynamic endLatitude;
+@dynamic endLongitude;
 
 static NSDateFormatter *_dateFormatter = nil;
 
@@ -33,6 +37,5 @@ static NSDateFormatter *_dateFormatter = nil;
 
     return [NSString stringWithFormat:@"%@-%@ (%@)", [[_dateFormatter stringFromDate:localStartDate] lowercaseString], [[_dateFormatter stringFromDate:localEndDate] lowercaseString], [NSDate co_timeInWordsBetweenStartDate:localStartDate andEndDate:localEndDate]];
 }
-
 
 @end

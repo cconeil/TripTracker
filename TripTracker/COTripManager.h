@@ -10,7 +10,6 @@
 
 extern NSString * const COTripManagerDidCreateTripNotification;
 
-
 @interface COTripManager : NSObject
 
 @property (nonatomic, assign) BOOL trackingEnabled;

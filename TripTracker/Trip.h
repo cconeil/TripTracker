@@ -17,6 +17,11 @@
 @property (nonatomic, retain) NSString * startLocation;
 @property (nonatomic, retain) NSString * endLocation;
 
+@property (nonatomic, assign) double startLongitude;
+@property (nonatomic, assign) double startLatitude;
+@property (nonatomic, assign) double endLongitude;
+@property (nonatomic, assign) double endLatitude;
+
 - (NSString *)route;
 - (NSString *)timeSpan;
 

@@ -8,6 +8,7 @@
 
 #import "BCAppDelegate.h"
 #import "COHomeViewController.h"
+#import "UIColor+COAdditions.h"
 
 @interface BCAppDelegate ()
 @end
@@ -54,6 +55,7 @@
 #pragma mark - Styling
 - (void)styleNavigationBar {
     [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navbar"] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTintColor:[UIColor co_lyftGreenColor]];
 }
 
 @end

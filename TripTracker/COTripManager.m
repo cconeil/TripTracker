@@ -83,6 +83,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     return self;
 }
 
+#pragma mark -
 - (NSArray *)trips {
     return self.fetchedResultsController.fetchedObjects ?: @[];
 }
@@ -105,10 +106,13 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     }
 }
 
+#pragma mark -
 - (void)startRecordingAtLocation:(CLLocation *)location {
     self.recordingTrip = YES;
     self.currentTrip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:self.managedObjectContext];
     self.currentTrip.startDate = [NSDate date];
+    self.currentTrip.startLongitude = location.coordinate.longitude;
+    self.currentTrip.startLatitude = location.coordinate.latitude;
     [self addressStringForLocation:location completion:^(NSString *address) {
         self.currentTrip.startLocation = address;
     }];
@@ -116,6 +120,8 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 
 - (void)endRecordingAtLocation:(CLLocation *)location completion:(void (^)())completion {
     self.currentTrip.endDate = [NSDate date];
+    self.currentTrip.endLongitude = location.coordinate.longitude;
+    self.currentTrip.endLatitude = location.coordinate.latitude;
     [self addressStringForLocation:location completion:^(NSString *address) {
         self.currentTrip.endLocation = address;
         if (completion) {

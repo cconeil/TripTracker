@@ -106,20 +106,23 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     }];
 }
 
-- (void)endRecordingAtLocation:(CLLocation *)location {
+- (void)endRecordingAtLocation:(CLLocation *)location completion:(void (^)())completion {
     self.currentTrip.endDate = [NSDate date];
     [self addressStringForLocation:location completion:^(NSString *address) {
         self.currentTrip.endLocation = address;
+        if (completion) {
+            completion();
+        }
     }];
 }
 
 - (void)endTrip {
     self.recordingTrip = NO;
-    [self endRecordingAtLocation:self.previousLocation];
-    [self saveContext];
-    [self clearCacheAndFetch];
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:COTripManagerDidCreateTripNotification object:nil];
+    [self endRecordingAtLocation:self.previousLocation completion:^{
+        [self saveContext];
+        [self clearCacheAndFetch];
+        [[NSNotificationCenter defaultCenter] postNotificationName:COTripManagerDidCreateTripNotification object:nil];
+    }];
 }
 
 -(NSString *)addressStringForLocation:(CLLocation *)location completion:(void (^)(NSString *address))completion {
@@ -177,10 +180,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     if (![self.managedObjectContext save:&error]) {
         NSLog(@"Failed to save trip to Core Data %@", [error localizedDescription]);
     }
-
-    NSLog(@"error : %@", error);
-
-
 }
 
 - (void)clearCacheAndFetch {

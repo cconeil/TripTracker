@@ -11,7 +11,6 @@
 #import "COTripTableViewCell.h"
 #import "UIColor+COAdditions.h"
 #import "COTripManager.h"
-
 #import <CoreLocation/CoreLocation.h>
 
 static const CGFloat kTripLoggingControlViewHeight = 70.0;

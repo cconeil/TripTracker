@@ -119,11 +119,13 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 }
 
 - (void)endRecordingAtLocation:(CLLocation *)location completion:(void (^)())completion {
-    self.currentTrip.endDate = [NSDate date];
-    self.currentTrip.endLongitude = location.coordinate.longitude;
-    self.currentTrip.endLatitude = location.coordinate.latitude;
+    Trip *tipClosure = self.currentTrip;
+    tipClosure.endDate = [NSDate date];
+    tipClosure.endLongitude = location.coordinate.longitude;
+    tipClosure.endLatitude = location.coordinate.latitude;
+
     [self addressStringForLocation:location completion:^(NSString *address) {
-        self.currentTrip.endLocation = address;
+        tipClosure.endLocation = address;
         if (completion) {
             completion();
         }
@@ -162,6 +164,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
     CLLocation *location = [locations lastObject];
     CLLocationSpeed speed = location.speed * kMilesPerHourConversion;
 
+    self.previousLocation = location;
     if (speed > kMinimumStartSpeed) {
         if (!self.recordingTrip) {
             [self startRecordingAtLocation:location];
@@ -176,8 +179,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
             self.endTripTimer = [NSTimer scheduledTimerWithTimeInterval:kEndTripTimeInterval target:self selector:@selector(endTrip) userInfo:nil repeats:NO];
         }
     }
-
-    self.previousLocation = location;
 }
 
 

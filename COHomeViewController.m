@@ -71,7 +71,7 @@ static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return kTripTableViewCellHeight;
+    return [COTripTableViewCell heightWithTrip:[COTripManager sharedManager].trips[indexPath.row] forWidth:self.tableView.frame.size.width];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

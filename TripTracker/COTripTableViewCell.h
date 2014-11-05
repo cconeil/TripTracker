@@ -12,5 +12,6 @@
 @interface COTripTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) Trip *trip;
++ (CGFloat)heightWithTrip:(Trip *)trip forWidth:(CGFloat)width;
 
 @end

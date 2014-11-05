@@ -10,10 +10,6 @@
 
 @implementation NSDate (COAdditions)
 
-- (NSDate *)co_localizedDate {
-    return [self dateByAddingTimeInterval:[[NSTimeZone localTimeZone] secondsFromGMT]];
-}
-
 + (NSString *)co_timeInWordsBetweenStartDate:(NSDate *)startDate andEndDate:(NSDate *)endDate {
     NSTimeInterval seconds = [endDate timeIntervalSinceDate:startDate];
     NSTimeInterval minutes = seconds / 60.0;

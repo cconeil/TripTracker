@@ -16,6 +16,8 @@ static const CGFloat kVerticalPadding = 4.0;
 static const CGFloat kRouteLabelFontSize = 14.0;
 static const CGFloat kTimeLableFontSize = 12.0;
 static const CGFloat kSeparatorViewHeight = 1.0;
+static const CGFloat kIconImageWidth = 26.5;
+static const CGFloat kBottomMargin = 10.0;
 
 @interface COTripTableViewCell()
 
@@ -38,11 +40,13 @@ static const CGFloat kSeparatorViewHeight = 1.0;
         _routeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _routeLabel.textColor = [UIColor co_mediumGrayColor];
         _routeLabel.font = [UIFont boldSystemFontOfSize:kRouteLabelFontSize];
+        _routeLabel.numberOfLines = 0;
         [self.contentView addSubview:_routeLabel];
 
         _timeLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _timeLabel.textColor = [UIColor co_lightGrayColor];
         _timeLabel.font = [UIFont italicSystemFontOfSize:kTimeLableFontSize];
+        _timeLabel.numberOfLines = 0;
         [self.contentView addSubview:_timeLabel];
 
         _separatorView = [[UIView alloc] initWithFrame:CGRectMake(0.0, self.frame.size.height - kSeparatorViewHeight, self.frame.size.width, kSeparatorViewHeight)];
@@ -74,11 +78,63 @@ static const CGFloat kSeparatorViewHeight = 1.0;
     iconImageViewFrame.origin.y = (self.frame.size.height - iconImageViewFrame.size.height) / 2.0;
     self.iconImageView.frame = iconImageViewFrame;
 
+    CGFloat labelWidth = self.frame.size.width - kIconImageWidth - kHorizontalPadding - 2.0 * kHorizontalMargin;
+    self.routeLabel.frame = CGRectMake(CGRectGetMaxX(iconImageViewFrame) + kHorizontalPadding, kVerticalMargin, labelWidth, 0.0);
     [self.routeLabel sizeToFit];
-    self.routeLabel.frame = CGRectMake(CGRectGetMaxX(iconImageViewFrame) + kHorizontalPadding, kVerticalMargin, self.routeLabel.frame.size.width, self.routeLabel.frame.size.height);
 
+    self.timeLabel.frame = CGRectMake(self.routeLabel.frame.origin.x, CGRectGetMaxY(self.routeLabel.frame) + kVerticalPadding, labelWidth, 0.0);
     [self.timeLabel sizeToFit];
-    self.timeLabel.frame = CGRectMake(self.routeLabel.frame.origin.x, CGRectGetMaxY(self.routeLabel.frame) + kVerticalPadding, self.timeLabel.frame.size.width, self.timeLabel.frame.size.height);
+}
+
+#pragma mark - Height
++ (CGFloat)heightWithTrip:(Trip *)trip forWidth:(CGFloat)width {
+    CGFloat height = 0.0;
+
+    CGFloat labelWidth = width - kIconImageWidth - kHorizontalPadding - 2.0 * kHorizontalMargin;
+    height += kVerticalMargin;
+    height += [self routeHeightWithTrip:trip andWidth:labelWidth];
+    height += kVerticalPadding;
+    height += [self timeSpanHeightWithTrip:trip andWidth:labelWidth];
+    height += kBottomMargin;
+
+    return height;
+}
+
++ (CGFloat)routeHeightWithTrip:(Trip *)trip andWidth:(CGFloat)width {
+    if (trip.route.length == 0) {
+        return 0.0;
+    }
+
+    NSAttributedString *attributedRoute = [[NSAttributedString alloc] initWithString:trip.route attributes:[self routeLabelAttributes]];
+
+    CGSize size = CGSizeMake(width, CGFLOAT_MAX);
+    return [attributedRoute boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+}
+
++ (CGFloat)timeSpanHeightWithTrip:(Trip *)trip andWidth:(CGFloat)width {
+    if (trip.timeSpan.length == 0) {
+        return 0.0;
+    }
+
+    NSAttributedString *attributedTimeSpan = [[NSAttributedString alloc] initWithString:trip.timeSpan attributes:[self timeSpanLabelAttributes]];
+
+    CGSize size = CGSizeMake(width, CGFLOAT_MAX);
+    return [attributedTimeSpan boundingRectWithSize:size options:NSStringDrawingUsesLineFragmentOrigin context:nil].size.height;
+}
+
+#pragma mark - Attributes
++ (NSDictionary *)routeLabelAttributes {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSParagraphStyleAttributeName] = [NSParagraphStyle defaultParagraphStyle];
+    attributes[NSFontAttributeName] = [UIFont boldSystemFontOfSize:kRouteLabelFontSize];
+    return attributes;
+}
+
++ (NSDictionary *)timeSpanLabelAttributes {
+    NSMutableDictionary *attributes = [NSMutableDictionary dictionary];
+    attributes[NSParagraphStyleAttributeName] = [NSParagraphStyle defaultParagraphStyle];
+    attributes[NSFontAttributeName] = [UIFont italicSystemFontOfSize:kTimeLableFontSize];
+    return attributes;
 }
 
 @end

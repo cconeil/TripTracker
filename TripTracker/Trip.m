@@ -27,15 +27,12 @@ static NSDateFormatter *_dateFormatter = nil;
 }
 
 - (NSString *)timeSpan {
-    NSDate *localStartDate = [self.startDate co_localizedDate];
-    NSDate *localEndDate = [self.endDate co_localizedDate];
-
     if (!_dateFormatter) {
         _dateFormatter = [[NSDateFormatter alloc] init];
         [_dateFormatter setDateFormat:@"hh:mma"];
     }
 
-    return [NSString stringWithFormat:@"%@-%@ (%@)", [[_dateFormatter stringFromDate:localStartDate] lowercaseString], [[_dateFormatter stringFromDate:localEndDate] lowercaseString], [NSDate co_timeInWordsBetweenStartDate:localStartDate andEndDate:localEndDate]];
+    return [NSString stringWithFormat:@"%@-%@ (%@)", [[_dateFormatter stringFromDate:self.startDate] lowercaseString], [[_dateFormatter stringFromDate:self.endDate] lowercaseString], [NSDate co_timeInWordsBetweenStartDate:self.startDate andEndDate:self.endDate]];
 }
 
 @end

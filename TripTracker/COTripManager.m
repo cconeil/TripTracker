@@ -107,7 +107,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 
 #pragma mark -
 - (void)startRecordingAtLocation:(CLLocation *)location {
-    NSLog(@"start location: %@", location);
+    NSLog(@"Starting trip at location %@", location);
     self.recordingTrip = YES;
     self.currentTrip = [NSEntityDescription insertNewObjectForEntityForName:@"Trip" inManagedObjectContext:self.managedObjectContext];
     self.currentTrip.startDate = [NSDate date];
@@ -119,7 +119,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 }
 
 - (void)endRecordingAtLocation:(CLLocation *)location completion:(void (^)())completion {
-    NSLog(@"end location: %@", location);
+    NSLog(@"Ending trip at location %@", location);
     Trip *tipClosure = self.currentTrip;
     tipClosure.endDate = [NSDate date];
     tipClosure.endLongitude = location.coordinate.longitude;
@@ -149,7 +149,7 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
         if (!error) {
             CLPlacemark *placemark = [placemarks firstObject];
             if (completion) {
-                completion(placemark.thoroughfare);
+                completion([NSString stringWithFormat:@"%@ %@", placemark.subThoroughfare, placemark.thoroughfare]);
             }
             return;
         } else {
@@ -162,7 +162,6 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
 
 #pragma mark - CLLocationManagerDelegate
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    NSLog(@"locationManager: didUpdateLocations:");
     CLLocation *location = [locations lastObject];
     CLLocationSpeed speed = location.speed * kMilesPerHourConversion;
 
@@ -172,19 +171,17 @@ static NSString * const kTripTrackerCache = @"TripTrackerCache";
             [self startRecordingAtLocation:location];
         } else {
             if (self.endTripTimer) {
+                NSLog(@"Driver continued his or her route.");
                 [self.endTripTimer invalidate];
                 self.endTripTimer = nil;
             }
         }
     } else if (speed <= 0.0) {
         if (!self.endTripTimer) {
+            NSLog(@"Driver stopped, waiting %f seconds to end trip.", kEndTripTimeInterval);
             self.endTripTimer = [NSTimer scheduledTimerWithTimeInterval:kEndTripTimeInterval target:self selector:@selector(endTrip) userInfo:nil repeats:NO];
         }
     }
-}
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"locationManager:didFailWithError: %@", error);
 }
 
 #pragma mark - Core Data

@@ -11,10 +11,10 @@
 
 static const CGFloat kHorizontalMargin = 15.0;
 static const CGFloat kHorizontalPadding = 15.0;
-static const CGFloat kVerticalMargin = 15.0;
-static const CGFloat kVerticalPadding = 8.0;
-static const CGFloat kRouteLabelFontSize = 12.0;
-static const CGFloat kTimeLableFontSize = 10.0;
+static const CGFloat kVerticalMargin = 12.0;
+static const CGFloat kVerticalPadding = 4.0;
+static const CGFloat kRouteLabelFontSize = 15.0;
+static const CGFloat kTimeLableFontSize = 12.0;
 static const CGFloat kSeparatorViewHeight = 1.0;
 
 @interface COTripTableViewCell()

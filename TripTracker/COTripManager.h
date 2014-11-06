@@ -12,9 +12,13 @@ extern NSString * const COTripManagerDidCreateTripNotification;
 
 @interface COTripManager : NSObject
 
+// Setting trackingEnabled will turn on location services and start to add trips
+// internally.  Trips are available through the trips property
 @property (nonatomic, assign) BOOL trackingEnabled;
-@property (nonatomic, assign, readonly) BOOL recordingTrip;
+
+// Access all of the trips that are stored
 @property (nonatomic, strong, readonly) NSArray *trips;
+@property (nonatomic, assign, readonly, getter=isRecordingTrip) BOOL recordingTrip;
 
 + (COTripManager *)sharedManager;
 

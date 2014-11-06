@@ -22,7 +22,7 @@
 @property (nonatomic, assign) double endLongitude;
 @property (nonatomic, assign) double endLatitude;
 
-- (NSString *)route;
-- (NSString *)timeSpan;
+- (NSString *)route; // returns the route in readable text
+- (NSString *)timeSpan; // returns the timeSpan in readable text
 
 @end

@@ -15,7 +15,6 @@
 #import <CoreLocation/CoreLocation.h>
 
 static const CGFloat kTripLoggingControlViewHeight = 70.0;
-static const CGFloat kTripTableViewCellHeight = 55.0;
 static NSString * const kTripTableViewCellIdentifier = @"TripTableViewCell";
 
 @interface COHomeViewController() <UITableViewDataSource, UITableViewDelegate, COTripLoggingControlViewDelegate>
